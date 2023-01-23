@@ -59,10 +59,13 @@ const loginSchema = Joi.object({
     "any.required": `Email is required`,
   }),
 });
-
+const verifySchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+});
 const schemas = {
   registerSchema,
   loginSchema,
+  verifySchema,
 };
 const User = model("user", userSchema);
 
